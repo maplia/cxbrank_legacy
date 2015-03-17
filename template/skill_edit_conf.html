@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<!--PRESET_EFSTAT_LOAD_SCRIPT-->
+		<title>ランクポイント編集確認 [<!--PRESET_MUSIC_TITLE-->] - <!--PRESET_ENGINE_NAME--></title>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--></a> &gt; <a href="/<!--PRESET_SKILL_LIST_URI-->">ランクポイント表</a> &gt; ランクポイント編集</p>
+		<h1>ランクポイント編集確認 <small>[<!--PRESET_MUSIC_TITLE-->]</small></h1>
+
+		<form method="post" action="/<!--PRESET_SKILL_EDIT_PROGRAM-->">
+			<div class="unit">
+				<h2>入力情報</h2>
+				<div class="subunit">
+					<!--PRESET_SKILL_DATA-->
+				</div>
+			</div>
+
+			<p>以上のスキル情報を<!--PRESET_CTRL_NAME-->します。よろしいですか?</p>
+			<p>
+				<input type="hidden" name="mode" value="<!--PRESET_MODE-->">
+				<input type="hidden" name="ctrl" value="<!--PRESET_CTRL_TYPE-->">
+				<input type="hidden" name="version" value="<!--PRESET_VERSION-->">
+				<input type="hidden" name="mid" value="<!--PRESET_MUSIC_ID-->">
+				<input type="submit" name="y" value="はい">
+				<input type="submit" name="n" value="いいえ">
+			</p>
+		</form>
+
+		<!--PRESET_FOOTER-->
+
+	</body>
+</html>

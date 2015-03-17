@@ -1,0 +1,42 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>ユーザー登録 - <!--PRESET_ENGINE_NAME--></title>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3124682-7', 'maplia.jp');
+		  ga('send', 'pageview');
+
+		</script>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--> トップ</a> &gt; ユーザー登録</p>
+		<h1><!--PRESET_ENGINE_NAME--> ユーザー登録</h1>
+
+		<form method="post" action="<!--PRESET_USER_EDIT_URI-->">
+			<p><em>*印</em>がついている項目は入力必須項目です。ここで入力した項目はユーザー登録後も変更可能です。</p>
+
+			<!--PRESET_USER_EDIT_FORM-->
+
+			<p>
+				<input type="submit" value="次へ進む" tabindex="<!--PRESET_SUBMIT_TABINDEX-->">
+				<input type="reset" value="入力リセット" tabindex="<!--PRESET_RESET_TABINDEX-->">
+			</p>
+		</form>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

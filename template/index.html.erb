@@ -1,0 +1,141 @@
+<%# coding: utf-8 %>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->" />
+		<meta name="keywords" content="CROSS×BEATS,クロスビーツ,ランクポイント,スキル,シミュレータ,スキル表,スキル帳" />
+		<meta name="description" content="「CROSS×BEATS」のランクポイント表作成Webツールを公開しているサイトです。" />
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->" />
+		<style type="text/css">
+			div.sidebar * ul {
+				padding-left: 0;
+			}
+			div.sidebar * ul li {
+				list-style-type: none; margin-left: 0; padding-left: 0;
+			}
+		</style>
+		<script type="text/javascript">
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+		  ga('create', 'UA-3124682-7', 'maplia.jp');
+		  ga('send', 'pageview');
+		</script>
+		<title><!--PRESET_ENGINE_NAME--></title>
+	</head>
+
+	<body>
+		<p class="top_navi"><!--PRESET_ENGINE_NAME--> トップ</p>
+		<h1><!--PRESET_ENGINE_NAME--></h1>
+
+		<div class="sidebar">
+			<div class="unit">
+				<h2>ログイン</h2>
+				<div class="subunit">
+					<dl>
+						<dt>■ユーザー登録済の方</dt>
+						<dd>
+							<form method="post" action="/<!--PRESET_USER_LOGIN_URI-->">
+								<p>ユーザーID: <input type="text" name="uid" size="<!--PRESET_USER_ID_FIGURE-->" maxlength="<!--PRESET_USER_ID_FIGURE-->" /></p>
+								<p>パスワード: <input type="password" name="password" size="12" maxlength="80" /></p>
+								<p><input type="submit" value="ログインする" /></p>
+							</form>
+						</dd>
+						<dt>■ユーザー未登録の方</dt>
+						<dd>
+							<p><a href="/<!--PRESET_USER_ADD_URI-->">新規ユーザー登録</a></p>
+						</dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="unit">
+				<h2>登録ユーザーリスト</h2>
+				<div class="subunit">
+					<p><a href="/user_list">登録ユーザーリスト</a></p>
+				</div>
+			</div>
+
+			<div class="unit">
+				<h2>登録曲リスト</h2>
+				<div class="subunit">
+					<p><a href="/musics">登録曲リスト</a></p>
+				</div>
+			</div>
+
+			<div class="unit">
+				<h2>RP理論値表</h2>
+				<div class="subunit">
+					<p><a href="/view/00001">ALL ULT100%</a></p>
+				</div>
+			</div>
+
+			<div class="unit">
+				<h2>その他ツール</h2>
+				<div class="subunit">
+					<p><a href="/tools/theepic">The Epic 獲得ライン一覧</a></p>
+					<p><a href="/tools/rankcalc">ランク別許容ミス数計算機</a></p>
+					<p><a href="/tools/scorerate">得点率計算ツール</a></p>
+					<p><a href="/tools/event11">イベントスコアシート（タッグ第6回）</a></p>
+				</div>
+			</div>
+
+			<div class="unit">
+				<h2>Link</h2>
+				<div class="subunit">
+					<dl>
+						<dt>■公式サイト</dt>
+						<dd>
+							<ul>
+								<li><a href="http://www.capcom.co.jp/smartphone/crossbeats/">公式サイト</a></li>
+								<li><a href="http://game.capcom.co.jp/crossbeats">メンバーズサイト</a></li>
+							</ul>
+						</dd>
+						<dt>■Wiki/個人サイト</dt>
+						<dd>
+							<ul>
+								<li><a href="http://crossxbeats.wiki.fc2.com/">【iOS】 CROSS×BEATS クロスビーツ 攻略wiki</a></li>
+								<li><a href="http://wiki.maplia.jp/?CROSS%C3%97BEATS">MapWiki - CROSS&times;BEATS</a></li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</div>
+		</div>
+
+		<div class="main">
+			<div class="unit">
+				<h2>このサイトについて</h2>
+				<div class="subunit">
+					<dl>
+						<dt>これは何ですか?</dt>
+						<dd>
+							<p><a href="http://www.capcom.co.jp/">カプコン</a>から配信されている「<a href="http://www.capcom.co.jp/smartphone/crossbeats/">CROSS&times;BEATS（クロスビーツ）</a>」のランクポイント管理Webアプリケーションです。</p>
+							<p>RPシステムがV時代のギタドラに似た仕様になっているので、<a href="http://gfdmmix.maplia.jp/">CSギタドラスキル表</a>を改造して作成しました。使い方もおおむね同じです。</p>
+							<p>こういう表が作れるということで<a href="/view/00002">作者のもの</a>をさらしてみます。</p>
+							<p>登録はご自由にどうぞ。</p>
+						</dd>
+					</dl>
+				</div>
+			</div>
+
+			<div class="unit">
+				<h2>最新の運営情報</h2>
+				<div class="subunit">
+					<%= open('template/index_news.html.erb').read %>
+				</div>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+
+		<div class="footer">
+			<p>Programmed by <a href="https://twitter.com/maplia">@maplia</a></p>
+		</div>
+	</body>
+</html>

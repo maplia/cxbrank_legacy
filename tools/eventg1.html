@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<title>CxB イベントスコアシート（第1回GLAY杯用）</title>
+		<script type="text/javascript">
+			var requires = [
+				{mid: 'azitateprologue', diff: 'ext'},
+				{mid: 'everkrack', diff: 'ext'},
+				{mid: 'tsukaisutedeadworld', diff: 'adv'},
+			];
+			var span = {start: Date.parse('2014/04/24'), end: Date.parse('2014/04/28')};
+			var eid = 'g1';
+		</script>
+		<script type="text/javascript" src="http://maplia.jp/script/jquery-1.11.0.min.js"></script>
+		<script type="text/javascript" src="http://maplia.jp/script/jquery.cookie.js"></script>
+		<script type="text/javascript" src="http://maplia.jp/script/strftime-min.js"></script>
+		<script type="text/javascript" src="cxb_event_jquery.js"></script>
+		<link rel="stylesheet" type="text/css" href="/style/skill.css" />
+		<style type="text/css">
+			th {text-align: left; padding: 0 0.5em;}
+			td {text-align: right; padding: 0 0.5em;}
+			tfoot td {font-weight: bold; background-color: #ccffcc;}
+			th.bsc {color: inherit; background-color: #cfc;}
+			td.bsc {color: inherit; background-color: #dfd;}
+			th.adv {color: inherit; background-color: #ffc;}
+			td.adv {color: inherit; background-color: #ffd;}
+			th.ext {color: inherit; background-color: #fcc;}
+			td.ext {color: inherit; background-color: #fdd;}
+		</style>
+	</head>
+
+	<body onLoad="initialize(requires, span, eid);">
+		<h1>CxB イベントスコアシート（第1回GLAY杯用）</h1>
+		<p>※入力データはサーバに保存していないため、他のブラウザには引き継がれません</p>
+		<p>※IE8以下はサポートしません</p>
+
+		<form>
+			<table id="table_input"></table>
+			<p>
+				<input type="button" value="計算" onClick="submitScores(requires, span, eid);" />
+			</p>
+		</form>
+
+		<p id="p_mtime"></p>
+		<table id="table_chart"></table>
+
+		<p>日別履歴</p>
+		<table id="table_history"></table>
+	</body>
+</html>

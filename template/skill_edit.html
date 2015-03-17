@@ -1,0 +1,48 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<!--PRESET_EFSTAT_LOAD_SCRIPT-->
+		<!--PRESET_GOOGLE_LOAD_SCRIPT-->
+		<title><!--PRESET_MODE_NAME--> スキル編集 [<!--PRESET_MUSIC_TITLE-->] - <!--PRESET_ENGINE_NAME--></title>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--> トップ</a> &gt; <a href="<!--PRESET_USER_MENU_URI-->">ユーザーメニュー</a> &gt; <a href="<!--PRESET_SKILL_LIST_URI-->"><!--PRESET_MODE_NAME--> スキル表</a> &gt; <!--PRESET_MODE_NAME--> スキル編集</p>
+		<h1><!--PRESET_MODE_NAME--> スキル編集 <small>[<!--PRESET_MUSIC_TITLE-->]</small></h1>
+		<p class="user_info">ユーザーID: <!--PRESET_USER_ID--> / ユーザー名: <!--PRESET_USER_NAME--></p>
+
+		<div class="unit">
+			<h2>現在の登録情報</h2>
+			<div class="subunit">
+				<!--PRESET_LAST_SKILL-->
+			</div>
+		</div>
+
+		<div class="unit">
+			<h2>編集フォーム</h2>
+			<div class="subunit">
+				<form method="post" action="<!--PRESET_SKILL_EDIT_URI-->">
+					<!--PRESET_SKILL_EDIT_FORM-->
+					<p>
+						<input type="hidden" name="mode" value="<!--PRESET_MODE-->">
+						<input type="hidden" name="version" value="<!--PRESET_VERSION-->">
+						<input type="hidden" name="id" value="<!--PRESET_MUSIC_ID-->">
+						<input type="submit" name="reg" value="登録">
+						<input type="submit" name="del" value="削除" <!--PRESET_DELETE_ACTIVATE-->>
+						<input type="reset" value="入力リセット">
+					</p>
+				</form>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+
+		<!--PRESET_GOOGLE_COUNT_SCRIPT-->
+	</body>
+</html>

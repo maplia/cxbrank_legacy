@@ -1,0 +1,34 @@
+<%# coding: utf-8 %>
+
+<% tr_class = MUSIC_DIFF_CLASSES[@diff] %>
+
+<tr class="<%= tr_class %>">
+	<th class="sn"><%= row.to_s %></th>
+	<td class="text">
+		<a href="/view/<%= user.uid %>">
+			<%= user.name.split(//u)[0, 15].join('') %>
+			<%= '...' if user.name.split(//u).size > 15 %>
+		</a>
+		<% if locked? %>
+			 
+			<img src="/images/padlocpadloc004.png" alt="[未取得]" height="12"/>
+		<% end %>
+		<% if ultimate? %>
+			 
+			<img src="/images/ult.png" alt="[U]" height="12"/>
+		<% end %>
+	</td>
+	<td class="number"><%= sprintf_for_point(user.rp) %></td>
+	<% if @stat != SP_STATUS_CLEAR %>
+		<td colspan="6" class="none">記録なし</td>
+	<% else %>
+		<td class="level">
+			[<%= MUSIC_DIFFS[@diff]%>] <%= sprintf('%.1f', @music.level(@diff)) %>
+		</td>
+		<td class="number"><%= sprintf('%.2f', @point) %></td>
+		<td class="number"><%= (@rate > 0 ? sprintf('%d%%', @rate) : '') %></td>
+		<td class="number"><%= (@u_rate > 0 ? sprintf('%d%%', @u_rate) : '') %></td>
+		<td class="mark"><%= SP_RANK_STATUSES[@rank] %></td>
+		<td class="mark"><%= SP_COMBO_STATUSES[@fcs] %></td>
+	<% end %>
+</tr>

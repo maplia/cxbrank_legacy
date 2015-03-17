@@ -1,0 +1,84 @@
+<%# coding: utf-8 %>
+
+<% require 'gfdmmix/skill_util' %>
+
+<tr>
+	<th rowspan="4" style="width: 3.0em">
+		<% if @music.limited? %>
+			-
+		<% else %>
+			<%= @music.number %>
+		<% end %>
+	</th>
+	<td colspan="6" class="title text">
+		<%= @music.title %>
+	</td>
+</tr>
+<tr>
+	<% [MUSIC_DIFF_BSC, MUSIC_DIFF_ADV, MUSIC_DIFF_EXT].each do |diff| %>
+		<% skill = @diff_skills[diff] %>
+		<td rowspan="2" class="rank 
+			<% if skill.fullcombo? %>
+				fullcombo
+			<% elsif skill.failed? %>
+				failed
+			<% end %>
+		">
+			<% if skill.cleared? %>
+				<%= SP_RANK_STATUSES[skill.rank] %>
+			<% elsif skill.failed? %>
+				F
+			<% else %>
+				&nbsp;
+			<% end %>
+		</td>
+		<td class="<%= GfDmMix::SkillListUtil::get_td_class(diff, row) %> mark"
+			<% if @max_skill == skill and (@max_skill.point || 0.0) > 0 and not @max_skill.untargeted? %>
+				style="color: white; background-color: red"
+			<% end %>
+		>
+			<% if not skill.cleared? %>
+				-
+			<% else %>
+				<% if @max_skill == skill and not @max_skill.untargeted? %>
+					<em style="color: inherit"><%= sprintf('%.2f', skill.point) %></em>
+				<% else %>
+					<%= sprintf('%.2f', skill.point) %>
+				<% end %>
+			<% end %>
+		</td>
+	<% end %>
+</tr>
+<tr>
+	<% [MUSIC_DIFF_BSC, MUSIC_DIFF_ADV, MUSIC_DIFF_EXT].each do |diff| %>
+		<% skill = @diff_skills[diff] %>
+		<td class="<%= GfDmMix::SkillListUtil::get_td_class(diff, row) %> mark">
+			<% if not skill.cleared? %>
+				-
+			<% else %>
+				<%= sprintf('%d%%', skill.rate) %>
+			<% end %>
+		</td>
+	<% end %>
+</tr>
+<tr>
+	<% [MUSIC_DIFF_BSC, MUSIC_DIFF_ADV, MUSIC_DIFF_EXT].each do |diff| %>
+		<% skill = @diff_skills[diff] %>
+		<% td_class = GfDmMix::SkillListUtil::get_td_class(diff, row) %>
+		<td class="<%= td_class %> mark">
+			<% if skill.locked? %>
+				 <img src="/images/padlocpadloc004.png" alt="[未取得]" height="12"/>
+			<% end %>
+			<% if skill.ultimate? %>
+				 <img src="/images/ult.png" alt="[U]" height="12"/>
+			<% end %>
+		</td>
+		<td class="<%= td_class %> mark">
+			<% if skill.fullcombo? %>
+				<%= SP_COMBO_STATUSES[skill.fcs] %>
+			<% else %>
+				&nbsp;
+			<% end %>
+		</td>
+	<% end %>
+</tr>

@@ -1,0 +1,53 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>登録曲情報編集確認 [<!--PRESET_TITLE-->] - <!--PRESET_ENGINE_NAME--></title>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--> トップ</a> &gt; <a href="<!--PRESET_MUSIC_LIST_URI-->"><!--PRESET_MODE_NAME--> 登録曲リスト</a> &gt; 登録曲情報編集確認</p>
+		<h1>登録曲情報編集確認 <small>[<!--PRESET_TITLE-->]</small></h1>
+
+		<div class="unit">
+			<h2>基本情報</h2>
+			<div class="subunit">
+				<ul>
+					<li>曲名: <!--PRESET_TITLE--></li>
+					<li>読み: <!--PRESET_SORTKEY--></li>
+					<li>曲タイプ: <!--PRESET_TYPE_NAME--></li>
+					<li>初出バージョン: <!--PRESET_FIRST_VERSION_NAME--></li>
+					<li>対象バージョン: <!--PRESET_VERSION_NAME--></li>
+					<li>CS版収録: <!--PRESET_CONTAIN_NAME--></li>
+					<li>備考: <!--PRESET_COMMENT--></li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="unit">
+			<h2>譜面情報</h2>
+			<div class="subunit">
+				<!--PRESET_MUSIC_SCORE_LIST-->
+			</div>
+		</div>
+
+		<form method="post" action="<!--PRESET_MUSIC_EDIT_URI-->">
+			<p>以上の曲を<!--PRESET_SUBMIT_NAME-->します。よろしいですか?</p>
+			<p>
+				<input type="hidden" name="mid" value="<!--PRESET_MUSIC_ID-->">
+				<input type="hidden" name="mode" value="<!--PRESET_MODE-->">
+				<input type="hidden" name="version" value="<!--PRESET_VERSION-->">
+				<!--PRESET_SUBMIT_TYPE_PARAM-->
+				<input type="submit" name="y" value="はい">
+				<input type="submit" name="n" value="いいえ">
+			</p>
+		</form>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

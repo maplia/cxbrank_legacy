@@ -1,0 +1,42 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>イベントスコア編集 [<!--PRESET_EVENT_TITLE-->] - <!--PRESET_ENGINE_NAME--></title>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="../"><!--PRESET_ENGINE_NAME--> </a> &gt; <a href="/<!--PRESET_SKILL_LIST_URI-->">ランクポイント表</a> &gt; イベントスコア編集</p>
+		<h1>イベントスコア編集 <small>[<!--PRESET_EVENT_TITLE-->]</small></h1>
+
+		<div class="unit">
+			<h2>現在の登録情報</h2>
+			<div class="subunit">
+				<!--PRESET_LAST_SKILL-->
+			</div>
+		</div>
+
+		<div class="unit">
+			<h2>編集フォーム</h2>
+			<div class="subunit">
+				<form method="post" action="/<!--PRESET_ESCORE_EDIT_URI-->">
+					<%= escore.to_html %>
+					<p>
+						<input type="submit" name="reg" value="登録">
+						<input type="submit" name="del" value="削除" <!--PRESET_DELETE_ACTIVATE-->>
+						<input type="reset" value="入力リセット">
+					</p>
+				</form>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

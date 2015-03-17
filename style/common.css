@@ -1,0 +1,350 @@
+@charset 'UTF-8';
+
+/*******************************************************************
+    共通スタイル指定
+ *******************************************************************/
+
+/*------------------------------------------------------------------
+    基本要素表示指定
+ ------------------------------------------------------------------*/
+body {
+	font-family: sans-serif;
+    padding: 4px;
+}
+
+h1 {
+    margin: 0px;
+    padding: 0px 5px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.25em;
+    margin: 0px;
+    padding: 0px;
+}
+
+p, ul, ol, table {
+    margin: 2px 0px;
+}
+
+ul, ol {
+    padding: 0 0 0 1.5em;
+}
+
+ul.setting {
+    padding: 0;
+}
+
+ul.setting li {
+    list-style-type: none;
+}
+
+dl {
+    padding: 0;
+    margin: 0;
+}
+
+dt {
+    font-weight: bold;
+    padding: 0;
+    margin: 0;
+}
+
+dd {
+    padding: 0;
+    margin: 0 0 0 1.5em;
+}
+
+form {
+    padding: 0;
+    margin: 0;
+}
+
+div.unit {
+    margin: 5px 0;
+}
+
+div.subunit {
+    margin: 0px 0px 0px 1.5em;
+}
+
+div.comment {
+	margin: 0;
+	padding: 2px;
+	background-color: white;
+	color: inherit;
+	border-style: solid;
+	border-width: 1px 2px 2px 1px;
+	border-color: inherit;
+	width: 28.0em;
+}
+
+div.footer {
+	text-align: right;
+}
+
+acronym {
+	cursor: help;
+}
+
+/*------------------------------------------------------------------
+    テーブル表示指定
+ ------------------------------------------------------------------*/
+table {
+    border-collapse: collapse;
+    border-style: solid;
+    border-width: 1px 2px 2px 1px;
+}
+
+th, td {
+    padding: 1px 3px;
+    border-style: solid;
+    border-width: 1px;
+}
+
+td {                            /* データセルは原則右寄せにする */
+    text-align: right;          /* それ以外の場合はその都度指定する */
+}
+
+td dl dt {                      /* table内では、dtの強調を打ち消す */
+    font-weight: normal;
+}
+
+table.edit td,                  /* 編集用テーブルのデータセルは原則左寄せに変更 */
+table.info td {					/* ユーザ情報表示用も同じく原則左寄せに */
+    text-align: left;
+}
+
+th.title {                      /* 曲タイトルのヘッダセル */
+    width: 25.0em;
+}
+
+th.title_skill {                /* スキル表用の曲タイトルのヘッダセル */
+    width: 28.0em;              /* 一部パート表示が発生するので少し幅を広げる */
+}
+
+td.text {                       /* タイトル以外のテキストデータセル */
+    text-align: left;
+}
+td.mark {                       /* プレイクラスなどのマーク表示データセル */
+    text-align: center;
+}
+td.level {						/* レベル表示のデータセル */
+    text-align: center;
+}
+td.none {                       /* 登録データなしなどのデータセル */
+    text-align: center;
+}
+
+table.chart td.rank {
+	font-size: 200%;
+	font-weight: bold;
+	width: 3.5em;
+	text-align: center;
+	color: #ffffff;
+	background-color: #000000;
+}
+
+table.chart td.fullcombo {
+	background-color: #888888;
+}
+
+table.chart td.failed {
+	color: gray;
+}
+
+table.chart td.mark {
+	width: 4.0em;
+}
+
+table.list td.level {
+	width: 6.0em;
+}
+
+/* スキルポイント表示テーブルの表示指定 */
+table.sp th.title {             /* ユーザメニューでのスキルポイント表のタイトル列 */
+    width: 12.0em;
+}
+table.sp th.sum,                /* スキル表ページでのスキルポイント表の合計値列 */
+table.sp th.part {              /* スキル表ページでのスキルポイント表の種類別合計値列 */
+    width: 9.0em;
+}
+table.sp th.part_ac {           /* アーケード形式のスキル表ページでの種類別合計値列 */
+    width: 6.0em;               /* 項目が多いので少し幅を縮める */
+}
+table.sp td {                   /* ポイントを表示するデータセル */
+    background-color: black;
+    font-weight: bold;
+    text-align: center;
+}
+
+table.music_list tbody td.title {
+	width: 25.0em;
+}
+
+/*------------------------------------------------------------------
+    スキル表の行番号表示
+ ------------------------------------------------------------------*/
+th.st {                         /* SP計算対象曲 */
+    color: red;
+    background-color: #CFC;
+}
+th.sn {                         /* SP非対象曲 */
+    color: #050;
+    background-color: #CFC;
+}
+
+th.st, th.sn {
+    width: 2.0em;
+}
+
+/*------------------------------------------------------------------
+    曲の譜面レベルごとの色指定
+ ------------------------------------------------------------------*/
+th.bsc, tr.bsc th, th.std, tr.std th {
+    color: #060;
+    background-color: #CFC;
+}
+td.bsc, tr.bsc td, td.std, tr.std td {
+    color: #060;
+    background-color: #DFD;
+}
+th.adv, tr.adv th, th.adv, tr.adv th {
+    color: #440;
+    background-color: #FFC;
+}
+td.adv, tr.adv td, td.adv, tr.adv td {
+    color: #440;
+    background-color: #FFD;
+}
+th.ext, tr.ext th, th.mtr, tr.mtr th {
+    color: #600;
+    background-color: #FCC;
+}
+td.ext, tr.ext td, td.mtr, tr.mtr td {
+    color: #600;
+    background-color: #FDD;
+}
+.etc {                          /* その他 */
+    color: inherit;
+    background-color: #FFF;
+}
+
+.v1_s0, .v2_s0, .v3_s0, .v4_s0 {    /* 白色: SP    0.00- 199.99 */
+    color: white;
+}
+
+/*------------------------------------------------------------------
+    登録時のスキルポイント差異表示
+ ------------------------------------------------------------------*/
+td.inc {                        /* それまでよりも上昇 */
+    font-weight: bold;
+    color: red;
+    background-color: inherit;
+}
+td.dec {                        /* それまでよりも下降 */
+    font-weight: bold;
+    color: blue;
+    background-color: inherit;
+}
+
+/*------------------------------------------------------------------
+    運営情報など
+ ------------------------------------------------------------------*/
+address {
+    font-style: normal;
+    text-align: right;
+}
+
+div.footer {
+    text-align: right;
+}
+
+/*------------------------------------------------------------------
+    パンくずリストとユーザ情報表示
+ ------------------------------------------------------------------*/
+.top_navi {
+    margin: 0px 0px 2px 0px;
+    padding: 0px;
+    text-align: left;
+}
+
+.user_info {
+    float: right;
+    text-align: right;
+}
+
+/*------------------------------------------------------------------
+    各種強調表示
+ ------------------------------------------------------------------*/
+em {
+    font-style: normal;
+    font-weight: bold;
+    color: red;
+}
+strong {
+    font-size: larger;
+    font-style: normal;
+    font-weight: bold;
+    color: red;
+}
+td.max {                        /* 達成率表示セルの、100%の場合の強調表示 */
+    text-align: center;
+    font-weight: bold;
+}
+.overwrote {                    /* ランクを上書き更新した場合の表示 */
+    font-weight: bold;
+    color: gray;
+}
+
+/*------------------------------------------------------------------
+    修正箇所の表示指定
+ ------------------------------------------------------------------*/
+del, del * {
+    text-decoration: line-through;
+    color: gray;
+}
+ins, ins * {
+    text-decoration: underline;
+}
+
+/*------------------------------------------------------------------
+    トップページ、ヘルプページのサイドバーにまつわる表示指定
+    参考サイト: http://www.geocities.jp/multi_column/
+ ------------------------------------------------------------------*/
+div.sidebar {
+    color: inherit;
+    background-color: #fff;
+    margin: 2px 5px 0px 0px;
+    padding: 2px;
+    float: left;
+    width: 19.0em;
+    border-width: 0px 1px 1px 0px;
+    border-style: solid;
+}
+
+div.sidebar h2 {            /* サイドバー内の見出し項目 */
+    font-size: 1.0em;
+    margin: 0px;
+    padding: 0px;
+    border-style: solid;
+    border-width: 0px 0px 1px 0px;
+}
+
+div.main {
+    margin-left: 19.5em;
+}
+
+div.main dl dt {                /*  */
+	margin: 3px 0;
+    padding: 1px 3px;
+}
+
+address {
+    clear: both;
+}
+
+a img {
+    border: none;
+}

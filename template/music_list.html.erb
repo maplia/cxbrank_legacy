@@ -1,0 +1,70 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>登録曲リスト - <!--PRESET_ENGINE_NAME--></title>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3124682-7', 'maplia.jp');
+		  ga('send', 'pageview');
+		</script>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--> トップ</a> &gt; <!--PRESET_MODE_NAME--> 登録曲リスト</p>
+		<h1>登録曲リスト</h1>
+
+		<ul>
+			<li>間違いがあれば、ご指摘ください。確認の上、修正を行います。</li>
+		</ul>
+
+		<% [MUSIC_TYPE_SPECIAL, MUSIC_TYPE_NORMAL, MUSIC_TYPE_LIMITED].each do |type| %>
+			<% next if music_type_hash[type].empty? %>
+			<div class="unit">
+				<h2><%= MUSIC_TYPES[type] %></h2>
+				<div class="subunit">
+					<table>
+						<thead>
+							<tr>
+								<th class="title" rowspan="2">タイトル</th>
+								<% MUSIC_DIFFS.keys.sort.each do |diff| %>
+									<th class="<%= MUSIC_DIFF_CLASSES[diff] %>" colspan="2">
+										<%= MUSIC_DIFFS[diff] %>
+									</th>
+								<% end %>
+							</tr>
+							<tr>
+								<% MUSIC_DIFFS.keys.sort.each do |diff| %>
+									<th class="<%= MUSIC_DIFF_CLASSES[diff] %> level" style="width: 2.5em">
+										Lv
+									</th>
+									<th class="<%= MUSIC_DIFF_CLASSES[diff] %> notes" style="width: 4.0em">
+										Notes
+									</th>
+								<% end %>
+							</tr>
+						</thead>
+						<tbody>
+							<% music_type_hash[type].sort.each do |music| %>
+								<%= music.to_html %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		<% end %>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

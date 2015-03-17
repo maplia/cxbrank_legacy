@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>登録曲情報編集 [<!--PRESET_MUSIC_TITLE-->] - <!--PRESET_ENGINE_NAME--></title>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--> トップ</a> &gt; <a href="<!--PRESET_MUSIC_LIST_URI-->"><!--PRESET_MODE_NAME--> 登録曲リスト</a> &gt; 登録曲情報編集</p>
+		<h1>登録曲情報編集 <small>[<!--PRESET_MUSIC_TITLE-->]</small></h1>
+
+		<!--PRESET_LAST_MUSIC_STATUS-->
+
+		<div class="unit">
+			<h2>編集フォーム</h2>
+			<div class="subunit">
+				<form method="post" action="<!--PRESET_MUSIC_EDIT_URI-->">
+					<!--PRESET_MUSIC_EDIT_FORM-->
+					<p>
+						<input type="hidden" name="mid" value="<!--PRESET_MUSIC_ID-->">
+						<input type="hidden" name="mode" value="<!--PRESET_MODE-->">
+						<!--PRESET_SUBMIT_BUTTONS-->
+						<input type="reset" value="入力リセット">
+					</p>
+				</form>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

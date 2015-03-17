@@ -1,0 +1,9 @@
+<%# coding: utf-8 %>
+
+<tr>
+	<td class="text"><%= @title %></td>
+	<% MUSIC_DIFFS.keys.sort.each do |diff| %>
+		<td class="<%= MUSIC_DIFF_CLASSES[diff] %>" level><%= sprintf_for_level(level(diff)) %></th>
+		<td class="<%= MUSIC_DIFF_CLASSES[diff] %>" notes><%= sprintf_for_notes(notes(diff)) %></th>
+	<% end %>
+</tr>

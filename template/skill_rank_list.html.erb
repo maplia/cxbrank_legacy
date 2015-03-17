@@ -1,0 +1,52 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>ランクポイントランキング [<%= music.title %>] - <!--PRESET_ENGINE_NAME--></title>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--></a> &gt; ランクポイントランキング</p>
+		<h1>ランクポイントランキング <small>[<%= music.title %>]</small></h1>
+
+		<div class="unit">
+			<h2>ランキング</h2>
+			<div class="subunit">
+				<table class="list">
+					<thead>
+						<tr>
+							<th>#</th><th>ユーザ名</th><th>総RP</th>
+							<th class="level">レベル</th>
+							<th class="mark">RP</th>
+							<th class="mark">RATE</th>
+							<th class="mark">ULT</th>
+							<th class="mark">ランク</th>
+							<th class="mark">コンボ</th>
+						</tr>
+					</thead>
+					<tbody>
+					<% rank = 1 %>
+					<% prev_skill = nil %>
+						<% skills.each_with_index do |skill, i| %>
+							<% next unless skill.max_skill.cleared? %>
+							<% if prev_skill and skill.max_skill.point != prev_skill.max_skill.point %>
+								<% rank = i + 1 %>
+							<% end %>
+							<%= skill.to_html_for_rank(rank, @mobile) %>
+							<% prev_skill = skill %>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

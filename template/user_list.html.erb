@@ -1,0 +1,74 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>ユーザー一覧 - <!--PRESET_ENGINE_NAME--></title>
+		<style type="text/css">
+			td {
+				padding: 0 0.5em;
+			}
+		</style>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3124682-7', 'maplia.jp');
+		  ga('send', 'pageview');
+		</script>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--> トップ</a> &gt; ユーザー一覧</p>
+		<h1><!--PRESET_ENGINE_NAME--> ユーザー一覧</h1>
+
+		<div class="unit">
+			<h2>ユーザー一覧</h2>
+			<div class="subunit">
+				<table class="list">
+					<thead>
+						<tr>
+							<th>ユーザーID</th>
+							<th>ユーザー名</th>
+							<th>CxB ID</th>
+							<th>RP</th>
+							<th>コメント</th>
+							<th>最終更新時刻</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% users.each do |user| %>
+							<% next if user.uid == '00001' %>
+							<tr>
+								<th><%= user.uid %></th>
+								<td class="text">
+									<a href="/view/<%= user.uid %>">
+										<%= user.name.split(//u)[0, 15].join('') %>
+										<%= '...' if user.name.split(//u).size > 15 %>
+									</a>
+								</td>
+								<td class="number"><%= (user.cxbid.to_i == 0 ? '' : user.cxbid) %></td>
+								<td class="number"><%= sprintf("%.2f", user.rp) %></td>
+								<td class="text" style="width: 17em">
+									<%= user.comment.split(//u)[0, 100].join('') %>
+									<%= '...' if user.comment.split(//u).size > 100 %>
+								</td>
+								<td><%= (user.rp_mtime ? user.rp_mtime.strftime("%Y-%m-%d %T") : '') %></td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

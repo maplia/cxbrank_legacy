@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<title>CxB イベントスコアシート（第4回用）</title>
+		<script type="text/javascript">
+			var ids = new Array('landingonthemoon', 'aerial', 'giantkilling', 'crossangel');
+		</script>
+		<script type="text/javascript" src="cookie.js"></script>
+		<script type="text/javascript" src="cxb_event.js"></script>
+		<link rel="stylesheet" type="text/css" href="/style/skill.css">
+		<style type="text/css">
+			th {text-align: left; padding: 0 0.5em;}
+			td {text-align: right; padding: 0 0.5em;}
+			tfoot td {font-weight: bold; background-color: #ccffcc;}
+		</style>
+	</head>
+
+	<body onLoad="initialize(ids, 'input', 'chart', 'mtime');">
+		<h1>CxB イベントスコアシート（第4回用）</h1>
+		<p>※入力データはサーバに保存していません</p>
+		<p>※IE8以下の動作保証はありません</p>
+
+		<form name="form1" method="post">
+			<table id="input"></table>
+			<p>
+				<input type="button" value="計算" onClick="submitScores(document.form1);">
+			</p>
+		</form>
+
+		<p id="mtime"></p>
+		<table id="chart"></table>
+	</body>
+</html>

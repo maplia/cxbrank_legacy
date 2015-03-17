@@ -1,0 +1,84 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=noinitial-scale=1, maximum-scale=1">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>ランクポイント表 - <!--PRESET_ENGINE_NAME--></title>
+		<style type="text/css">
+			h1 {font-size: 140%}
+			td.level {width: 4.0em}
+			td.point {width: 3.0em}
+			td.rate {width: 2.5em}
+			td.mark {width: 2.0em}
+		</style>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3124682-7', 'maplia.jp');
+		  ga('send', 'pageview');
+
+		</script>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--></a> &gt; ランクポイント表</p>
+		<h1>ランクポイント表</h1>
+
+		<!--PRESET_USER_COMMENT-->
+
+		<div class="unit">
+			<h2>ランクポイント</h2>
+			<div class="subunit">
+				<table class="sp">
+					<thead>
+						<tr>
+							<% [MUSIC_TYPE_SPECIAL, MUSIC_TYPE_NORMAL].each do |type| %>
+								<th class="part"><%= MUSIC_TYPES[type].sub(/RP対象曲/, '') %></th>
+							<% end %>
+							<th class="sum">合計RP</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% total_point = 0.0 %>
+						<tr>
+							<% [MUSIC_TYPE_SPECIAL, MUSIC_TYPE_NORMAL].each do |type| %>
+								<td class="mark v1_s0"><%= sprintf('%.2f', skill_point_hash[type]) %></th>
+								<% total_point += skill_point_hash[type] %>
+							<% end %>
+							<td class="mark v1_s0"><%= sprintf('%.2f', total_point) %></th>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<% [MUSIC_TYPE_SPECIAL, MUSIC_TYPE_NORMAL, MUSIC_TYPE_LIMITED].each do |type| %>
+			<% next if skill_items_hash[type].empty? %>
+			<div class="unit">
+				<h2><%= MUSIC_TYPES[type] %></h2>
+				<div class="subunit">
+					<table class="list" style="width: 100%">
+						<tbody>
+							<% index = 1 %>
+							<% skill_items_hash[type].each do |skill| %>
+								<% next if @edit == false and skill.max_skill.fcs.nil? %>
+								<%= skill.to_html_for_list(index, index <= MUSIC_TYPE_ST_COUNTS[type], @mobile, @edit) %>
+								<% index = index + 1 %>
+							<% end %>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		<% end %>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

@@ -1,0 +1,86 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=noinitial-scale=1, maximum-scale=1">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title><!--PRESET_USER_NAME-->さんのクリア状況表 - <!--PRESET_ENGINE_NAME--></title>
+		<style type="text/css">
+			h1 {font-size: 140%}
+			td.level {width: 4.0em}
+			td.point {width: 3.0em}
+			td.rate {width: 2.5em}
+			td.mark {width: 2.0em}
+		</style>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3124682-7', 'maplia.jp');
+		  ga('send', 'pageview');
+
+		</script>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--></a> &gt; クリア状況表</p>
+		<h1>クリア状況表</small></h1>
+
+		<!--PRESET_USER_COMMENT-->
+
+		<div class="unit">
+			<h2>クリア状況</h2>
+			<div class="subunit">
+				<table>
+					<tbody>
+						<tr>
+							<th>クリア譜面数</th>
+							<td class="mark" style="width: 7.0em"><%= cleared_stage_count %>譜面</td>
+							<th>MASTERクリア曲数</th>
+							<td class="mark" style="width: 7.0em"><%= cleared_master_count %>曲</td>
+						</tr>
+						<tr>
+							<th>Sランク以上クリア譜面数</th>
+							<td class="mark"><%= srank_stage_count %>譜面</td>
+							<th>最高クリアレベル</th>
+							<td class="mark">Lv.<%= cleared_max_level %></td>
+						</tr>
+						<tr>
+							<th>フルコンボ譜面数</th>
+							<td class="mark"><%= fullcombo_stage_count %>譜面</td>
+							<th>最高フルコンボレベル</th>
+							<td class="mark">Lv.<%= fullcombo_max_level %></td>
+						</tr>
+						<tr>
+							<th>ULTIMATEクリア譜面数</th>
+							<td class="mark" style="width: 7.0em"><%= ultimate_stage_count %>譜面</td>
+							<th>最高ULTIMATEクリアレベル</th>
+							<td class="mark">Lv.<%= ultimate_max_level %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="unit">
+			<h2>曲リスト</h2>
+			<div class="subunit">
+				<table class="chart">
+					<tbody>
+						<% skills.each_with_index do |skill, i| %>
+							<%= skill.to_html_for_chart(@mobile, i+1) %>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

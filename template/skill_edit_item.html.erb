@@ -1,0 +1,42 @@
+<%# coding: utf-8 %>
+
+<tr class="#{MUSIC_DIFF_CLASSES[@diff]}">
+	<th rowspan="2" class="<%= MUSIC_DIFF_CLASSES[@diff] %>">
+		<%= MUSIC_DIFFS[@diff] %>
+	</th>
+	<td>
+		<label>
+			<input type="radio"
+				name="<%= @diff %>_t" value="<%= SP_STATUS_CLEAR %>"
+				<%= 'checked="checked"' if @stat == SP_STATUS_CLEAR %>>
+			<%= SP_STATUSES[SP_STATUS_CLEAR] %>
+		</label>: 
+			html << "<label>RP: <input type=\"text\" name=\"#{name_init}_pt\""
+			html << " maxlength=\"#{RATE_FIGURE}\" style=\"width: 3.0em\""
+			html << " value=\"#{@point}\"" if @point
+			html << '></label> '
+			html << "<label>CLEAR RATE: <input type=\"text\" name=\"#{name_init}_rt\""
+			html << " maxlength=\"#{RATE_FIGURE}\" style=\"width: 2.0em\""
+			html << " value=\"#{sprintf('%d', @rate)}\"" if @rate
+			html << '> %</label> '
+			html << "<label>ランク: <select name=\"#{name_init}_rk\">"
+			html << hash_to_option_html(SP_RANK_STATUSES, @rank)
+			html << '</select></label> '
+			html << "<label>フルコンボ: <select name=\"#{name_init}_f\">"
+			html << hash_to_option_html(SP_COMBO_STATUSES, @fcs)
+			html << '</select></label> '
+			html << '</td>'
+			html << '</tr>'
+			# 3行目: 失敗/未プレイ
+			html << "<tr class=\"#{MUSIC_DIFF_CLASSES[@diff]}\">"
+			html << '<td>'
+			html << "<label><input type=\"radio\" name=\"#{name_init}_t\""
+			html << " value=\"#{SP_STATUS_FAILED}\""
+			html << " checked" if @stat == SP_STATUS_FAILED
+			html << ">#{SP_STATUSES[SP_STATUS_FAILED]}</label> / "
+			html << "<label><input type=\"radio\" name=\"#{name_init}_t\""
+			html << " value=\"#{SP_STATUS_NO_PLAY}\""
+			html << " checked" if @stat == SP_STATUS_NO_PLAY
+			html << ">#{SP_STATUSES[SP_STATUS_NO_PLAY]}</label>"
+			html << '</td>'
+			html << '</tr>'

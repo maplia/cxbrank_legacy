@@ -1,0 +1,56 @@
+<%# coding: utf-8 %>
+
+<div class="unit">
+	<div class="subunit">
+		<table>
+		<tbody>
+ 			<tr>
+				<th>ユーザー名</th><td>@name</td>
+			</tr>
+			<% if edit %>
+				<% menu_uri = "#{SKILL_LIST_VIEW_PROGRAM}/#{@uid}" %>
+				full_uri = "#{get_request_path(cgi)}#{menu_uri}"
+	 			<tr>
+	 				<th>RP表公開URL</th>
+					<td class="text">
+						<a href="#{menu_uri}">#{full_uri}</a>"
+				html << '<br />'
+
+				menu_uri = "#{SKILL_LIST_VIEW_IGLOCK_PROGRAM}/#{@uid}"
+				full_uri = "#{get_request_path(cgi)}#{menu_uri}"
+
+				html << "<a href=\"/#{menu_uri}\">#{full_uri}</a>"
+				html << '（未取得/ロックフラグ無視版）</td>'
+	 			html << '</tr>'
+
+				menu_uri = "#{CLEAR_LIST_VIEW_PROGRAM}/#{@uid}"
+				full_uri = "#{get_request_path(cgi)}#{menu_uri}"
+
+	 			html << '<tr>'
+	 			html << '<th>クリア表公開URL</th>'
+	 			html << make_text_data_cell_html("<a href=\"/#{menu_uri}\">#{full_uri}</a>")
+	 			html << '</tr>'
+			end
+			unless (@cxbid || '').empty?
+				html << '<tr>'
+				html << '<th>C&times;B ID</th>'
+				html << make_text_data_cell_html(@cxbid)
+				html << '</tr>'
+			end
+			unless (@comment || '').empty?
+				escaped_comment = textarea_data_to_html(CGI.escapeHTML(@comment), true)
+
+				html << '<tr>'
+				html << '<th>コメント</th>'
+				html << make_text_data_cell_html(escaped_comment)
+				html << '</tr>'
+			end
+			html << '</tbody>'
+			html << '</table>'
+			if edit
+				html << '<a href="/user_edit">ユーザー情報編集</a>'
+			end
+			html << '</div>'
+			html << '</div>'
+
+			return html

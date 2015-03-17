@@ -1,0 +1,105 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=<!--PRESET_CHARSET-->">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title><%= user1.name %>さんのランクポイント表 [VS. <%= user2.name %>さん] - <!--PRESET_ENGINE_NAME--></title>
+		<style type="text/css">
+			td.user1 {text-align: right;}
+			td.user2 {text-align: left;}
+		</style>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="/<!--PRESET_SITE_TOP_URI-->"><!--PRESET_ENGINE_NAME--></a> &gt; ランクポイント表 [VS. <%= user2.name %>さん]</p>
+		<h1>ランクポイント表</small></h1>
+
+		<div class="unit">
+			<h2>基本情報</h2>
+			<div class="subunit">
+				<table>
+					<tbody>
+						<tr>
+							<td class="user1">
+								<a href="/view/<%= user1.uid %>"><%= user1.name %></a>
+							</td>
+							<th>ユーザー名</th>
+							<td class="user2">
+								<a href="/view/<%= user2.uid %>"><%= user2.name %></a>
+							</td>
+						</tr>
+						<tr>
+							<td class="user1"><%= user1.cxbid %></td>
+							<th>CxB ID</th>
+							<td class="user2"><%= user2.cxbid %></td>
+						</tr>
+						<tr>
+							<td class="user1"><%= sprintf('%.2f', user1.rp) %></td>
+							<th>RP</th>
+							<td class="user2"><%= sprintf('%.2f', user2.rp) %></td>
+						</tr>
+						<tr>
+							<td class="user1"><%= user1.rp_mtime ? user1.rp_mtime.strftime('%Y-%m-%d %T') : '' %></td>
+							<th>最終更新時刻</th>
+							<td class="user2"><%= user2.rp_mtime ? user2.rp_mtime.strftime('%Y-%m-%d %T') : '' %></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<div class="unit">
+			<h2>各曲ランクポイント</h2>
+			<div class="subunit">
+				<table>
+					<thead>
+						<tr>
+							<th>タイトル</th>
+							<th>RP</th>
+							<th>差</th>
+							<th>RP</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% musics.each do |music| %>
+							<% title = music.title.gsub(/ \(/, '<br>(').gsub(/ ～/, '<br>～').gsub(/<br>～逆/, '～逆') %>
+							<% skill1 = skill_set1[music.mid].max_skill %>
+							<% skill2 = skill_set2[music.mid].max_skill %>
+							<% user1_class = 'user1' + (skill1.cleared? ? " #{MUSIC_DIFF_CLASSES[skill1.diff]}" : '') %>
+							<% user2_class = 'user2' + (skill2.cleared? ? " #{MUSIC_DIFF_CLASSES[skill2.diff]}" : '') %>
+
+							<tr>
+								<th><%= title %></th>
+								<td class="<%= user1_class %>">
+									<% if skill1.cleared? %>
+										<% if skill1.ultimate? %>
+											<img src="/images/ult.png" alt="[U]" height="12"> 
+										<% end %>
+										<%= sprintf('%.2f', skill1.point) %>
+									<% end %>
+								</td>
+								<%= make_difference_data_cell_html(skill1.point - skill2.point) %>
+								<td class="<%= user2_class %>">
+									<% if skill2.cleared? %>
+										<%= sprintf('%.2f', skill2.point) %>
+										<% if skill2.ultimate? %>
+											 <img src="/images/ult.png" alt="[U]" height="12">
+										<% end %>
+									<% end %>
+								</td>
+							</tr>
+						<% end %>
+					</tbody>
+				</table>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>

@@ -1,0 +1,50 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html lang="ja">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta http-equiv="Content-Script-Type" content="text/javascript">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>クリアレート計算機 - <!--PRESET_ENGINE_NAME--></title>
+		<script type="text/javascript">
+			var std_level = <%= music.level(MUSIC_DIFF_BSC) %>;
+			var hrd_level = <%= music.level(MUSIC_DIFF_ADV) %>;
+			var mas_level = <%= music.level(MUSIC_DIFF_EXT) %>;
+			var levels = new Array(std_level, hrd_level, mas_level);
+			var std_notes = <%= music.notes(MUSIC_DIFF_BSC) %>;
+			var hrd_notes = <%= music.notes(MUSIC_DIFF_ADV) %>;
+			var mas_notes = <%= music.notes(MUSIC_DIFF_EXT) %>;
+			var notes = new Array(std_notes, hrd_notes, mas_notes);
+		</script>
+		<script type="text/javascript" src="/tools/rate_calc.js"></script>
+		<style type="text/css">
+			td {width: 3.0em;}
+		</style>
+	</head>
+
+	<body>
+		<form name="form1">
+			<p>
+				<label><input type="radio" name="diff" value="std">STANDARD</label> / 
+				<label><input type="radio" name="diff" value="hrd">HARD</label> / 
+				<label><input type="radio" name="diff" value="mas" checked>MASTER</label>
+			</p>
+			<p>
+				<label>Flawless <input type="text" name="judge_f" size="3" maxlength="3" value=""></label> 
+				<label>Super <input type="text" name="judge_s" size="3" maxlength="3" value=""></label> 
+				<label>Cool <input type="text" name="judge_c" size="3" maxlength="3" value=""></label> 
+				<label>MAXCOMBO <input type="text" name="judge_mc" size="3" maxlength="3" value=""></label> 
+				<label><input type="checkbox" name="ult" value="1"> ULTIMATE</label>
+			</p>
+			<p>
+				<input type="button" name="calc" value="計算" onClick="calcRate(document.form1, levels, notes);"> &gt;&gt; 
+				Clear Rate <input type="text" name="rate" size="6"> / 
+				RP <input type="text" name="rp" size="6">
+			</p>
+		</form>
+	</body>
+</html>

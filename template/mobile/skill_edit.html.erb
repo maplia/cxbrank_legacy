@@ -1,0 +1,56 @@
+<%# coding: utf-8 %>
+
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, user-scalable=noinitial-scale=1, maximum-scale=1">
+		<meta name="generator" content="<!--PRESET_ENGINE_NAME-->">
+		<meta name="robots" content="noindex, nofollow">
+		<link rel="stylesheet" type="text/css" href="<!--PRESET_STYLE_SHEET-->">
+		<title>ランクポイント編集 [<!--PRESET_MUSIC_TITLE-->] - <!--PRESET_ENGINE_NAME--></title>
+		<style type="text/css">
+			h1 {font-size: 140%}
+		</style>
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-3124682-7', 'maplia.jp');
+		  ga('send', 'pageview');
+
+		</script>
+	</head>
+
+	<body>
+		<p class="top_navi"><a href="../"><!--PRESET_ENGINE_NAME--> </a> &gt; <a href="/<!--PRESET_SKILL_LIST_URI-->">ランクポイント表</a> &gt; ランクポイント編集</p>
+		<h1>ランクポイント編集 <br/><small>[<!--PRESET_MUSIC_TITLE-->]</small></h1>
+
+		<div class="unit">
+			<h2>現在の登録情報</h2>
+			<div class="subunit">
+				<!--PRESET_LAST_SKILL-->
+			</div>
+		</div>
+
+		<div class="unit">
+			<h2>編集フォーム</h2>
+			<div class="subunit">
+				<p><em>「未取得/ロック譜面」をチェックすると計算対象外になります</em></p>
+				<form method="post" action="/<!--PRESET_SKILL_EDIT_URI-->">
+					<!--PRESET_SKILL_EDIT_FORM-->
+					<p>
+						<input type="hidden" name="id" value="<!--PRESET_MUSIC_ID-->">
+						<input type="submit" name="reg" value="登録">
+						<input type="submit" name="del" value="削除" <!--PRESET_DELETE_ACTIVATE-->>
+						<input type="reset" value="入力リセット">
+					</p>
+				</form>
+			</div>
+		</div>
+
+		<!--PRESET_FOOTER-->
+	</body>
+</html>
